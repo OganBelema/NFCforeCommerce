@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">NFC for eCommerce</string>
+    <string name="admin">Admin</string>
+    <string name="cashier">cashier</string>
+    <string name="list_of_customers">List of Customers</string>
+    <string name="add_customer">Add Customer</string>
+    <string name="no_customer">No customer</string>
+    <string name="customer">Customer</string>
 </resources>

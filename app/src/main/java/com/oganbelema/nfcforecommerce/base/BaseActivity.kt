@@ -7,7 +7,11 @@ import android.nfc.NfcAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.oganbelema.nfcforecommerce.R
+import kotlinx.android.synthetic.main.activity_base.*
 
 /**
  * This base activity for the application that will serve as the entry point to the app
@@ -23,9 +27,19 @@ class BaseActivity : AppCompatActivity() {
         NfcAdapter.getDefaultAdapter(this)
     }
 
+
+    /**
+     * Navigation controller to handle app's navigation
+     */
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
+
+        navController = findNavController(R.id.nav_host_fragment)
+
+        bottom_navigation.setupWithNavController(navController)
 
         if (isNfcAvailable()){
             Toast.makeText(this, "Nfc ia available", Toast.LENGTH_LONG)
@@ -35,6 +49,8 @@ class BaseActivity : AppCompatActivity() {
                 .show()
         }
     }
+
+    override fun onSupportNavigateUp() = navController.navigateUp()
 
     /**
      * Checks that the device has nfc capability and that nfc is enabled
@@ -79,6 +95,11 @@ class BaseActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         disableForegroundDispatch()
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        //TODO dispatch received intent to fragment
     }
 
 

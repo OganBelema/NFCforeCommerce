@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/customerListFragment">
+
+    <fragment
+        android:id="@+id/customerListFragment"
+        android:name="com.oganbelema.nfcforecommerce.admin.customerlist.CustomerListFragment"
+        android:label="@string/list_of_customers"
+        tools:layout="@layout/customer_list_fragment" >
+        <action
+            android:id="@+id/action_customerListFragment_to_addCustomerFragment"
+            app:destination="@id/addCustomerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addCustomerFragment"
+        android:name="com.oganbelema.nfcforecommerce.admin.addcustomer.AddCustomerFragment"
+        android:label="@string/add_customer"
+        tools:layout="@layout/add_customer_fragment" />
+    <fragment
+        android:id="@+id/cashierFragment"
+        android:name="com.oganbelema.nfcforecommerce.cashier.CashierFragment"
+        android:label="@string/cashier"
+        tools:layout="@layout/cashier_fragment" />
+    <fragment
+        android:id="@+id/customerFragment"
+        android:name="com.oganbelema.nfcforecommerce.customer.CustomerFragment"
+        android:label="@string/customer"
+        tools:layout="@layout/customer_fragment" />
+
+</navigation>

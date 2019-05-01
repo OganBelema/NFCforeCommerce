@@ -1,4 +1,4 @@
-package com.oganbelema.nfcforecommerce.admin
+package com.oganbelema.nfcforecommerce.admin.addcustomer
 
 import androidx.lifecycle.ViewModel
 

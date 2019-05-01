@@ -13,6 +13,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // for dokka
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion"
+        // for navigation controller
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0-alpha02"
     }
 }
 
