@@ -5,7 +5,6 @@
         android:id="@+id/customerListFragment"
         android:icon="@drawable/ic_admin_with_cogwheels"
         android:title="@string/admin" />
-
     <item
         android:id="@+id/customerFragment"
         android:icon="@drawable/ic_customer_support"

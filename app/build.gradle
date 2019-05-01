@@ -50,5 +50,11 @@ dependencies {
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
 
+    // Lottie animation dependency
+    implementation 'com.airbnb.android:lottie:3.0.1'
+
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
 
 }
