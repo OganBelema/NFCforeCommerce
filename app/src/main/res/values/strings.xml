@@ -6,4 +6,8 @@
     <string name="add_customer">Add Customer</string>
     <string name="no_customer">No customer</string>
     <string name="customer">Customer</string>
+    <string name="nfc_hint">Tap device on nfc tag</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_tag_id">Tag Id</string>
+    <string name="hint_account_balance">Account Balance</string>
 </resources>

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.oganbelema.nfcforecommerce.R
 import kotlinx.android.synthetic.main.activity_base.*
@@ -33,11 +34,19 @@ class BaseActivity : AppCompatActivity() {
      */
     private lateinit var navController: NavController
 
+    /**
+     * A listener for when an nfc tag is discovered by the device and the
+     * BaseActivity is called
+     */
+    var nfcTagDiscoveredListener: NfcTagDiscoveredListener? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
 
         navController = findNavController(R.id.nav_host_fragment)
+
+        setupActionBarWithNavController(navController, null)
 
         bottom_navigation.setupWithNavController(navController)
 
@@ -99,7 +108,10 @@ class BaseActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        //TODO dispatch received intent to fragment
+
+        if (nfcTagDiscoveredListener != null){
+            nfcTagDiscoveredListener?.onNfcTagDiscovered(intent)
+        }
     }
 
 
