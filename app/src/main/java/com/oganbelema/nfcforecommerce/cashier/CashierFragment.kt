@@ -1,18 +1,19 @@
 package com.oganbelema.nfcforecommerce.cashier
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import com.oganbelema.nfcforecommerce.R
+import com.oganbelema.nfcforecommerce.base.BaseNfcListenerFragment
 
-class CashierFragment : Fragment() {
+class CashierFragment : BaseNfcListenerFragment() {
 
-    companion object {
-        fun newInstance() = CashierFragment()
+    override fun onNfcTagDiscovered(intent: Intent?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private lateinit var viewModel: CashierViewModel

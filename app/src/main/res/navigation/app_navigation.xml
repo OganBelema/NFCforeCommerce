@@ -27,8 +27,8 @@
         tools:layout="@layout/cashier_fragment" />
     <fragment
         android:id="@+id/customerFragment"
-        android:name="com.oganbelema.nfcforecommerce.customer.CustomerFragment"
-        android:label="@string/customer"
+        android:name="com.oganbelema.nfcforecommerce.customersupport.CustomerSupportFragment"
+        android:label="@string/customer_support"
         tools:layout="@layout/customer_fragment" />
 
 </navigation>

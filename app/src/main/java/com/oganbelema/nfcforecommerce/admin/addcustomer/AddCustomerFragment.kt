@@ -5,19 +5,17 @@ import android.nfc.NfcAdapter
 import android.nfc.Tag
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.snackbar.Snackbar
 
 import com.oganbelema.nfcforecommerce.R
-import com.oganbelema.nfcforecommerce.base.BaseActivity
-import com.oganbelema.nfcforecommerce.base.NfcTagDiscoveredListener
+import com.oganbelema.nfcforecommerce.base.BaseNfcListenerFragment
 import com.oganbelema.nfcforecommerce.util.Util
 import kotlinx.android.synthetic.main.add_customer_fragment.*
 
-class AddCustomerFragment : Fragment(), NfcTagDiscoveredListener {
+class AddCustomerFragment : BaseNfcListenerFragment() {
 
     /**
      * {@inheritDoc}
@@ -32,8 +30,8 @@ class AddCustomerFragment : Fragment(), NfcTagDiscoveredListener {
      * It hides the scan tag animation and shows the add customer view elements
      */
     private fun showTagDetectedViewState() {
-        if (nfcTagAnimationViews != null) {
-            nfcTagAnimationViews.visibility = View.GONE
+        if (scanNfcTagHintViews != null) {
+            scanNfcTagHintViews.visibility = View.GONE
             addCustomerViews.visibility = View.VISIBLE
         }
     }
@@ -67,31 +65,5 @@ class AddCustomerFragment : Fragment(), NfcTagDiscoveredListener {
         // TODO: Use the ViewModel
     }
 
-    /**
-     * Registers the fragment to receive the detected tag from the activity
-     */
-    private fun registerTagDiscoveredListener() {
-        if (activity != null){
-            (activity as BaseActivity).nfcTagDiscoveredListener = this
-        }
-    }
 
-    /**
-     * Unregisters the fragment from receiving the detected tag from the activity
-     */
-    private fun unregisterTagDiscoveredListener(){
-        if (activity != null){
-            (activity as BaseActivity).nfcTagDiscoveredListener = null
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        registerTagDiscoveredListener()
-    }
-
-    override fun onStop() {
-        unregisterTagDiscoveredListener()
-        super.onStop()
-    }
 }

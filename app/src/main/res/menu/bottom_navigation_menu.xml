@@ -8,9 +8,9 @@
     <item
         android:id="@+id/customerFragment"
         android:icon="@drawable/ic_customer_support"
-        android:title="@string/customer" />
+        android:title="@string/customer_support" />
     <item
         android:id="@+id/cashierFragment"
-        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        android:icon="@drawable/ic_point_of_sale_terminal_pos"
         android:title="@string/cashier" />
 </menu>

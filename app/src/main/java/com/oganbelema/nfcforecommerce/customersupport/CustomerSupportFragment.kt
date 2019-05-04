@@ -1,21 +1,22 @@
-package com.oganbelema.nfcforecommerce.customer
+package com.oganbelema.nfcforecommerce.customersupport
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import com.oganbelema.nfcforecommerce.R
+import com.oganbelema.nfcforecommerce.base.BaseNfcListenerFragment
 
-class CustomerFragment : Fragment() {
+class CustomerSupportFragment : BaseNfcListenerFragment() {
 
-    companion object {
-        fun newInstance() = CustomerFragment()
+    override fun onNfcTagDiscovered(intent: Intent?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private lateinit var viewModel: CustomerViewModel
+    private lateinit var customerSupportViewModel: CustomerSupportViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +27,7 @@ class CustomerFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CustomerViewModel::class.java)
+        customerSupportViewModel = ViewModelProviders.of(this).get(CustomerSupportViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
