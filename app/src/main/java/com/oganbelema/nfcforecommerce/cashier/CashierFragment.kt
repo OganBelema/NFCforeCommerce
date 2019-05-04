@@ -1,6 +1,5 @@
 package com.oganbelema.nfcforecommerce.cashier
 
-import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +11,11 @@ import com.oganbelema.nfcforecommerce.base.BaseNfcListenerFragment
 
 class CashierFragment : BaseNfcListenerFragment() {
 
-    override fun onNfcTagDiscovered(intent: Intent?) {
+    override fun showTagDetectedViewState() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onExtractTagId(tagId: ByteArray?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

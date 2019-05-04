@@ -29,6 +29,6 @@
         android:id="@+id/customerFragment"
         android:name="com.oganbelema.nfcforecommerce.customersupport.CustomerSupportFragment"
         android:label="@string/customer_support"
-        tools:layout="@layout/customer_fragment" />
+        tools:layout="@layout/customer_support_fragment" />
 
 </navigation>

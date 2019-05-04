@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.oganbelema.nfcforecommerce.R
 import kotlinx.android.synthetic.main.activity_base.*
 
+
 /**
  * This base activity for the application that will serve as the entry point to the app
  */
@@ -35,10 +36,10 @@ class BaseActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     /**
-     * A listener for when an nfc tag is discovered by the device and the
+     * Stores the listeners for when an nfc tag is discovered by the device and the
      * BaseActivity is called
      */
-    var nfcTagDiscoveredListener: NfcTagDiscoveredListener? = null
+    val nfcTagDiscoveredListeners: MutableList<NfcTagDiscoveredListener> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,8 +110,8 @@ class BaseActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
-        if (nfcTagDiscoveredListener != null){
-            nfcTagDiscoveredListener?.onNfcTagDiscovered(intent)
+        for (nfcTagDiscoveredListener in nfcTagDiscoveredListeners){
+            nfcTagDiscoveredListener.onNfcTagDiscovered(intent)
         }
     }
 

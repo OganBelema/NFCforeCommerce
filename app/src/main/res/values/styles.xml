@@ -12,4 +12,21 @@
         <item name="android:background">@drawable/button_background</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="CardTextViewStyle" parent="@android:style/Widget.Material.Light.TextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TagIdTextViewStyle" parent="CardTextViewStyle">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5</item>
+    </style>
+
+    <style name="CustomerTextViewStyle" parent="CardTextViewStyle">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline4</item>
+    </style>
+
+    <style name="CustomerAccountBalanceTextViewStyle" parent="CardTextViewStyle">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
+    </style>
 </resources>

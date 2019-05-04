@@ -10,7 +10,10 @@
     <string name="hint_full_name">Full Name</string>
     <string name="hint_tag_id">Tag Id</string>
     <string name="hint_account_balance">Account Balance</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_amount">Amount</string>
+    <string name="credit">Credit</string>
+    <string name="card_background_image">Card view background image</string>
+    <string name="sample_tag_id">2453CA2343</string>
+    <string name="sample_customer_name">Belema Ogan</string>
+    <string name="sample_customer_account_balance">₦2000</string>
 </resources>

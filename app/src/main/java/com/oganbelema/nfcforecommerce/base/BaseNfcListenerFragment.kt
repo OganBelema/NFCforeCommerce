@@ -1,5 +1,8 @@
 package com.oganbelema.nfcforecommerce.base
 
+import android.content.Intent
+import android.nfc.NfcAdapter
+import android.nfc.Tag
 import androidx.fragment.app.Fragment
 
 
@@ -12,11 +15,41 @@ import androidx.fragment.app.Fragment
 abstract class BaseNfcListenerFragment : Fragment(), NfcTagDiscoveredListener {
 
     /**
+     * {@inheritDoc}
+     */
+    override fun onNfcTagDiscovered(intent: Intent?) {
+        showTagDetectedViewState()
+        processReceivedIntent(intent)
+    }
+
+    /**
+     * Update the view to show the tag has been detected
+     */
+    abstract fun showTagDetectedViewState()
+
+    /**
+     * Extracts the tag id from the nfc tag contained in the received intent
+     * @param intent containing the discovered tag
+     */
+    private fun processReceivedIntent(intent: Intent?){
+        if (intent != null){
+            val nfcTag = intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
+            onExtractTagId(nfcTag?.id)
+        }
+    }
+
+    /**
+     * Use this extracted tag id
+     * @param tagId The unique id of the discovered nfc tag
+     */
+    abstract fun onExtractTagId(tagId: ByteArray?)
+
+    /**
      * Registers the fragment to receive the detected tag from the activity
      */
     private fun registerTagDiscoveredListener() {
         if (activity != null){
-            (activity as BaseActivity).nfcTagDiscoveredListener = this
+            (activity as BaseActivity).nfcTagDiscoveredListeners.add(this)
         }
     }
 
@@ -25,7 +58,7 @@ abstract class BaseNfcListenerFragment : Fragment(), NfcTagDiscoveredListener {
      */
     private fun unregisterTagDiscoveredListener(){
         if (activity != null){
-            (activity as BaseActivity).nfcTagDiscoveredListener = null
+            (activity as BaseActivity).nfcTagDiscoveredListeners.remove(this)
         }
     }
 
@@ -38,4 +71,5 @@ abstract class BaseNfcListenerFragment : Fragment(), NfcTagDiscoveredListener {
         unregisterTagDiscoveredListener()
         super.onStop()
     }
+
 }
