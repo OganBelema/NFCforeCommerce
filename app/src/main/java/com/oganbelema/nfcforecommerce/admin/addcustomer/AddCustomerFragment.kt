@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.google.android.material.snackbar.Snackbar
 
 import com.oganbelema.nfcforecommerce.R
-import com.oganbelema.nfcforecommerce.base.BaseNfcListenerFragment
+import com.oganbelema.basicnfclibrary.BaseNfcListenerFragment
 import com.oganbelema.nfcforecommerce.util.Util
 import kotlinx.android.synthetic.main.add_customer_fragment.*
 

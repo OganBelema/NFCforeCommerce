@@ -1,16 +1,17 @@
-package com.oganbelema.nfcforecommerce.base
+package com.oganbelema.basicnfclibrary
 
 import android.content.Intent
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import androidx.fragment.app.Fragment
+import com.oganbelema.basicnfclibrary.BaseActivityWithNfcListeners
+import com.oganbelema.basicnfclibrary.NfcTagDiscoveredListener
 
 
 /**
- * A base fragment that listens for nfc tag discovered notifications from the base
- * activity.
+ * A base fragment that listens for nfc tag discovered notifications from a BaseActivityWithNfcListeners.
  * Contains helper methods that are required by an nfc listener fragment
- * Extend this to listen for nfc tag discovered notifications from the base activity in a fragment
+ * Extend this to listen for nfc tag discovered notifications from a BaseActivityWithNfcListeners activity in a fragment
  */
 abstract class BaseNfcListenerFragment : Fragment(), NfcTagDiscoveredListener {
 
@@ -45,31 +46,30 @@ abstract class BaseNfcListenerFragment : Fragment(), NfcTagDiscoveredListener {
     abstract fun onExtractTagId(tagId: ByteArray?)
 
     /**
-     * Registers the fragment to receive the detected tag from the activity
+     * Registers the fragment as a listener for dispatched nfc tag discovered intent
      */
-    private fun registerTagDiscoveredListener() {
-        if (activity != null){
-            (activity as BaseActivity).nfcTagDiscoveredListeners.add(this)
+    private fun registerAsListener() {
+        if (activity != null) {
+            (activity as BaseActivityWithNfcListeners).registerTagDiscoveredListener(this)
         }
     }
 
     /**
-     * Unregisters the fragment from receiving the detected tag from the activity
+     * Unregisters the fragment as a listener for dispatched nfc tag discovered intent
      */
-    private fun unregisterTagDiscoveredListener(){
-        if (activity != null){
-            (activity as BaseActivity).nfcTagDiscoveredListeners.remove(this)
+    private fun unregisterAsListener() {
+        if (activity != null) {
+            (activity as BaseActivityWithNfcListeners).unregisterTagDiscoveredListener(this)
         }
     }
 
     override fun onStart() {
         super.onStart()
-        registerTagDiscoveredListener()
+        registerAsListener()
     }
 
     override fun onStop() {
-        unregisterTagDiscoveredListener()
+        unregisterAsListener()
         super.onStop()
     }
-
 }

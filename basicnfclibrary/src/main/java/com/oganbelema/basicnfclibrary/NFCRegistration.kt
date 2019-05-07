@@ -9,6 +9,7 @@ import android.nfc.NfcAdapter
 /**
  * Use this class to register to detect nfc tags in an activity
  * @param activity to be notified when nfc tag is discovered
+ * @author Belema Ogan
  */
 class NFCRegistration(private val activity: Activity) {
 

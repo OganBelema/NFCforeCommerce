@@ -1,13 +1,12 @@
 package com.oganbelema.nfcforecommerce.base
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.oganbelema.basicnfclibrary.BaseActivityWithNfcListeners
 import com.oganbelema.basicnfclibrary.NFCRegistration
 import com.oganbelema.nfcforecommerce.R
 import kotlinx.android.synthetic.main.activity_base.*
@@ -16,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_base.*
 /**
  * This base activity for the application that will serve as the entry point to the app
  */
-class BaseActivity : AppCompatActivity() {
+class BaseActivity : BaseActivityWithNfcListeners() {
 
     /**
      * This is the device's default nfc adapter
@@ -33,11 +32,7 @@ class BaseActivity : AppCompatActivity() {
      */
     private lateinit var navController: NavController
 
-    /**
-     * Stores the listeners for when an nfc tag is discovered by the device and the
-     * BaseActivity is called
-     */
-    val nfcTagDiscoveredListeners: MutableList<NfcTagDiscoveredListener> = arrayListOf()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,14 +63,6 @@ class BaseActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         nfcRegistration.disableForegroundDispatch()
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-
-        for (nfcTagDiscoveredListener in nfcTagDiscoveredListeners){
-            nfcTagDiscoveredListener.onNfcTagDiscovered(intent)
-        }
     }
 
 
